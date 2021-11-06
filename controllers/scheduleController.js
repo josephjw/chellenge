@@ -12,15 +12,15 @@ var applist = require('../models/app.model');
 router.post('/addwork',(req,res)=>{
     /*  #swagger.auto = true
         #swagger.path= '/schedule/addwork'
-        #swagger.method = 'get'
+        #swagger.method = 'post'
         #swagger.produces = ['application/json']
         #swagger.consumes = ['application/json']
        
         */
-    // let task = {
-    //           "Name":req.body.Name,
-    //           "day":req.body.day,
-    //           "description":req.body.description ,
+    
+    var Name =req.body.Name;
+    var day=req.body.day;
+    var description=req.body.description;
     //           "startTime":req.body.startTime,
     //           "endTime":req.body.endTime,}
 
@@ -53,10 +53,7 @@ router.get('/allwork',(req,res)=>{
             #swagger.method = 'get'
             #swagger.produces = ['application/json']
             #swagger.consumes = ['application/json']
-             #swagger.parameters['id'] = {
-            in: 'path',
-            type: 'integer',
-            description: 'User ID.' } 
+            
         */
   console.log("swagger working");
     workSche.find(function (err, docs) {
@@ -80,11 +77,15 @@ router.get('/allwork',(req,res)=>{
 
 
 router.post('/addApp',(req,res)=>{
-    // #swagger.path= '/schedule/addwork'
-    // res.json({
-    //     "status":200,
-    //     "meesage":"sucessfully saved",
-    // });
+    /*  #swagger.path= '/schedule/addApp'
+        */
+        
+       var appName =req.body.appName;
+       var block =req.body.block;
+       var place =req.body.place;
+       var packageName =req.body.packageName;
+       var description =req.body.description;
+
 
 var pro = new applist(req.body)
 pro.save((err, doc) => {
@@ -168,8 +169,13 @@ router.get('/limitedApps',(req,res)=>{
 router.post('/editApp/',(req,res)=>{
                     // #swagger.path= '/schedule/editApps'
 
-                    req.au
+                    
     var appId = req.body._id;
+    var appName = req.body.appName;
+    var block = req.body.block;
+    var place = req.body.place;
+    var startTime = req.body.startTime;
+    var endTime = req.body.endTime;
 
     var pro = new applist(req.body);
     applist.findByIdAndUpdate(appId,pro,function (err, doc) {

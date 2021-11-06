@@ -13,9 +13,7 @@
       "description": "Endpoints"
     }
   ],
-  "schemes": [
-    "http"
-  ],
+  "schemes": [],
   "securityDefinitions": {
     "api_key": {
       "type": "apiKey",
@@ -31,7 +29,7 @@
   ],
   "paths": {
     "/schedule/addwork": {
-      "get": {
+      "post": {
         "tags": [],
         "description": "",
         "consumes": [
@@ -40,13 +38,26 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
-        "responses": {}
-      },
-      "post": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "example": "any"
+                },
+                "day": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -60,14 +71,7 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "type": "integer",
-            "description": "User ID."
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -79,6 +83,39 @@
             "description": "Not Found"
           }
         }
+      }
+    },
+    "/schedule/addApp": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appName": {
+                  "example": "any"
+                },
+                "block": {
+                  "example": "any"
+                },
+                "place": {
+                  "example": "any"
+                },
+                "packageName": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
       }
     },
     "/schedule/allApp": {
@@ -117,6 +154,15 @@
               "type": "object",
               "properties": {
                 "_id": {
+                  "example": "any"
+                },
+                "appName": {
+                  "example": "any"
+                },
+                "block": {
+                  "example": "any"
+                },
+                "place": {
                   "example": "any"
                 }
               }

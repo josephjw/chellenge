@@ -21,7 +21,7 @@ const doc = {
     },
     host: "127.0.0.1:3000",
     basePath: "/",
-    schemes: ['http'],
+    schemes: [],
     consumes: ['application/json'],
     produces: ['application/json'],
     Option:{
